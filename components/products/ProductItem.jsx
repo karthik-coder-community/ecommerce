@@ -1,27 +1,12 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import Link from "next/link";
-// import StarRatings from "react-star-ratings";
+import StarRatings from "react-star-ratings";
 import Image from "next/image";
 import CartContext from "@/context/CartContext";
 
 const ProductItem = ({ product }) => {
   const { addItemToCart } = useContext(CartContext);
 
-  const [selectedImage, setSelectedImage] = useState(localStorage.getItem('selectedImage') || '/images/fav.png');
-
-  useEffect(() => {
-    localStorage.setItem('selectedImage', selectedImage);
-  }, [selectedImage]);
-
-product._id="64709054a1005c321ec7424d"
-  const handleImageClick = () => {
-    console.log("data_product",product)
-    if (selectedImage === '/images/fav.png') {
-      setSelectedImage('/images/fav-select.png');
-    } else {
-      setSelectedImage('/images/fav.png');
-    }
-  };
   const addToCartHandler = () => {
     addItemToCart({
       product: product._id,
@@ -56,15 +41,6 @@ product._id="64709054a1005c321ec7424d"
               height="240"
               width="240"
             />
-         <span className="absolute -top-2 -right-2 w-6 h-6 text-sm text-center flex items-center justify-center text-white bg-gray-400 rounded-full">
-      <img
-        src={selectedImage}
-        height="40"
-        width="120"
-        alt="BuyItNow"
-        onClick={handleImageClick}
-      />
-    </span>
           </div>
         </div>
         <div className="md:w-2/4">
@@ -75,7 +51,22 @@ product._id="64709054a1005c321ec7424d"
             >
               {product.name}
             </Link>
-            
+            <div className="flex flex-wrap items-center space-x-2 mb-2">
+              <div className="ratings">
+                <div className="my-1">
+                  <StarRatings
+                    rating={product?.ratings}
+                    starRatedColor="#ffb829"
+                    numberOfStars={5}
+                    starDimension="18px"
+                    starSpacing="1px"
+                    name="rating"
+                  />
+                </div>
+              </div>
+              <b className="text-gray-300">•</b>
+              <span className="ml-1 text-yellow-500">{product?.ratings}</span>
+            </div>
             <p className="text-gray-500 mb-2">
               {product?.description.substring(0, 150)}...
             </p>
@@ -84,11 +75,10 @@ product._id="64709054a1005c321ec7424d"
         <div className="md:w-1/4 border-t lg:border-t-0 lg:border-l border-gray-200">
           <div className="p-5">
             <span className="text-xl font-semibold text-black">
-            ₹
- {product?.price}
+              ${product?.price}
             </span>
 
-            {/* <p className="text-green-500">Free Shipping</p> */}
+            <p className="text-green-500">Free Shipping</p>
             <div className="my-3">
               <a
                 className="px-4 py-2 inline-block text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 cursor-pointer"
@@ -96,9 +86,7 @@ product._id="64709054a1005c321ec7424d"
               >
                 {" "}
                 Add to Cart{" "}
-               
-              </a> 
-              {/* test */}
+              </a>
             </div>
           </div>
         </div>
