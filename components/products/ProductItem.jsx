@@ -51,7 +51,7 @@ const ProductItem = ({ product }) => {
             >
               {product.name}
             </Link>
-            <div className="flex flex-wrap items-center space-x-2 mb-2">
+            {/* <div className="flex flex-wrap items-center space-x-2 mb-2">
               <div className="ratings">
                 <div className="my-1">
                   <StarRatings
@@ -66,7 +66,7 @@ const ProductItem = ({ product }) => {
               </div>
               <b className="text-gray-300">•</b>
               <span className="ml-1 text-yellow-500">{product?.ratings}</span>
-            </div>
+            </div> */}
             <p className="text-gray-500 mb-2">
               {product?.description.substring(0, 150)}...
             </p>
@@ -75,7 +75,7 @@ const ProductItem = ({ product }) => {
         <div className="md:w-1/4 border-t lg:border-t-0 lg:border-l border-gray-200">
           <div className="p-5">
             <span className="text-xl font-semibold text-black">
-              ${product?.price}
+            ₹{product?.price}
             </span>
 
             <p className="text-green-500">Free Shipping</p>

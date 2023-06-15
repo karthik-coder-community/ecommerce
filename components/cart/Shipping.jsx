@@ -208,7 +208,7 @@ const Shipping = ({ addresses }) => {
 
   return (
     <div>
-      <BreadCrumbs breadCrumbs={breadCrumbs} />
+      {/* <BreadCrumbs breadCrumbs={breadCrumbs} /> */}
       <section className="py-10 bg-gray-50">
         <div className="container max-w-screen-xl mx-auto px-4">
           <div className="flex flex-col md:flex-row gap-4 lg:gap-8">
