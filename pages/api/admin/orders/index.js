@@ -10,6 +10,7 @@ import { getOrders } from "@/backend/controllers/orderControllers";
 const handler = nc({ onError });
 
 dbConnect();
+// handler.use(isAuthenticatedUser, authorizeRoles("admin")).get(getOrders);
 
 handler.use(isAuthenticatedUser, authorizeRoles("admin")).get(getOrders);
 
